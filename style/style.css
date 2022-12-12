@@ -1,0 +1,279 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.container {
+  width: 1100px;
+  margin: 0 auto;
+}
+
+body {
+  background-color: #212121;
+}
+
+.morph {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #212121;
+  transition: 1s;
+  transition-property: transform;
+}
+.morph.open {
+  transform: scale(1000);
+  z-index: 100;
+  transition: 1s ease-in;
+  transition-property: transform;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #212121;
+  color: #ffffff;
+  padding: 7px 20px;
+}
+header .hamburguer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.062745098);
+  border: none;
+  border-radius: 50%;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  z-index: 102;
+  opacity: 1;
+  visibility: visible;
+}
+header .hamburguer.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+header .hamburguer.active .line {
+  transform: rotate(-225deg);
+}
+header .hamburguer.active .line::before {
+  top: 0;
+  transform: rotate(90deg);
+}
+header .hamburguer.active .line::after {
+  bottom: 0;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+header .hamburguer:hover {
+  transform: rotate(-45deg) scale(0.8);
+}
+header .hamburguer .line {
+  position: relative;
+  width: 25px;
+  height: 2px;
+  background-color: #ffffff;
+  left: 0;
+  transition: 1s cubic-bezier(0.42, 0, 0.05, 1.89);
+}
+header .hamburguer .line::before {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 2px;
+  background-color: #ffffff;
+  left: 0;
+  transition: 1s cubic-bezier(0.42, 0, 0.05, 1.89);
+  top: -7px;
+}
+header .hamburguer .line::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 2px;
+  background-color: #ffffff;
+  left: 0;
+  transition: 1s cubic-bezier(0.42, 0, 0.05, 1.89);
+  bottom: -7px;
+}
+header h3 {
+  color: rgba(255, 255, 255, 0.5647058824);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+header .go-linkedin {
+  color: #ffffff;
+  font-size: 25px;
+  transition: 200ms;
+}
+header .go-linkedin:hover {
+  color: #386177;
+  transform: scale(0.9);
+}
+header .backdrop-header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: 200ms;
+  z-index: 100;
+}
+header .backdrop-header.open {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 400ms;
+}
+header .backdrop-header nav ul {
+  display: flex;
+  flex-direction: column;
+}
+header .backdrop-header nav ul li {
+  list-style: none;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  padding: 10px 0;
+  font-size: 18px;
+  text-align: center;
+}
+header .backdrop-header nav ul li:hover {
+  color: #386177;
+  transform: scale(0.9);
+}
+
+section .cards-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+section .cards-wrapper .card {
+  height: 60vh;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section .cards-wrapper .card img {
+  width: 250px;
+}
+
+.details {
+  position: fixed;
+  top: 0;
+  width: 50vw;
+  height: 100vh;
+  visibility: hidden;
+  opacity: 0;
+  transition: 200ms;
+  z-index: 1000;
+}
+.details.show {
+  visibility: visible;
+  opacity: 1;
+}
+.details.show .overview-details .seila img {
+  opacity: 1;
+  transition-delay: 1s;
+}
+.details .overview-details {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.details .overview-details .navigation {
+  position: absolute;
+  top: 10px;
+  left: -60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.062745098);
+  border: none;
+  border-radius: 50%;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  z-index: 1001;
+  opacity: 0;
+}
+.details .overview-details .navigation:hover {
+  transform: scale(0.8);
+}
+.details .overview-details .navigation.open {
+  left: 20px;
+  opacity: 1;
+}
+.details .overview-details .navigation i {
+  color: #ffffff;
+  font-size: 18px;
+}
+.details .overview-details .seila {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.details .overview-details .seila img {
+  width: 300px;
+  opacity: 0;
+  transition: 200ms;
+}
+.details .right-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 50px;
+  position: fixed;
+  top: 0;
+  right: -50vw;
+  background-color: #ffffff;
+  width: 50vw;
+  height: 100vh;
+  z-index: 1000;
+  transition: 0.5s cubic-bezier(0.05, 0.07, 0.3, 0.98);
+  overflow: auto;
+  padding: 20px;
+}
+.details .right-content .card-user {
+  background-color: #efefef;
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+}
+.details .right-content .card-user .user p {
+  font-size: 13px;
+}
+.details .right-content button {
+  padding: 10px 30px;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  transition: 200ms;
+  cursor: pointer;
+}
+.details .right-content button:hover {
+  transform: scale(0.8);
+}
+.details .right-content.open {
+  right: 0px;
+}/*# sourceMappingURL=style.css.map */

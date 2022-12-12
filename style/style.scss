@@ -1,0 +1,344 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap');
+
+
+@mixin alignCenter() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin lineButtonHeader($position) {
+    position: $position;
+    width: 25px;
+    height: 2px;
+    background-color: #ffffff;
+    left: 0;
+    transition: 1s cubic-bezier(0.42, 0, 0.05, 1.89);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.container {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+body {
+    background-color: #212121;
+}
+
+.morph {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #212121;
+    transition: 1s;
+    transition-property: transform;
+
+    &.open {
+        transform: scale(1000);
+        z-index: 100;
+        transition: 1s ease-in;
+        transition-property: transform;
+    }
+
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #212121;
+    color: #ffffff;
+    padding: 7px 20px;
+
+    .hamburguer {
+        @include alignCenter();
+        width: 50px;
+        height: 50px;
+        background-color: #ffffff10;
+        border: none;
+        border-radius: 50%;
+        transition: .3s ease-in-out;
+        cursor: pointer;
+        z-index: 102;
+        opacity: 1;
+        visibility: visible;
+
+        &.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        &.active {
+
+            .line {
+                transform: rotate(-225deg);
+    
+                &::before {
+                    top: 0;
+                    transform: rotate(90deg);
+                }
+    
+                &::after {
+                    bottom: 0;
+                    transform: rotate(45deg);
+                    opacity: 0;
+                }
+    
+            }
+  
+        }
+
+        &:hover {
+            transform: rotate(-45deg) scale(0.8);
+        }
+
+        .line {
+            @include lineButtonHeader(relative);
+
+            &::before {
+                content: '';
+                @include lineButtonHeader(absolute);
+                top: -7px;
+            }
+
+            &::after {
+                content: '';
+                @include lineButtonHeader(absolute);
+                bottom: -7px;
+            }
+
+        }
+
+    }
+
+    h3 {
+        color: #ffffff90;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .go-linkedin {
+        color: #ffffff;
+        font-size: 25px;
+        transition: 200ms;
+
+        &:hover {
+            color: #386177;
+            transform: scale(.9);
+        }
+
+    }
+
+    .backdrop-header {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        @include alignCenter();
+        z-index: 2000;
+        opacity: 0;
+        visibility: hidden;
+        transition: 200ms;
+        z-index: 100;
+
+        &.open {
+            opacity: 1;
+            visibility: visible;
+            transition-delay: 400ms;
+        }
+
+        nav {
+
+            ul {
+                display: flex;
+                flex-direction: column;
+    
+                li {
+                    list-style: none;
+                    cursor: pointer;
+                    transition: .3s ease-in-out;
+                    padding: 10px 0;
+                    font-size: 18px;
+                    text-align: center;
+    
+                    &:hover {
+                        color: #386177;
+                        transform: scale(.9);
+                    }
+    
+                }
+    
+            }
+
+        }
+
+    }
+
+}
+
+section {
+
+    .cards-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    
+        .card {
+            height: 60vh;
+            cursor: pointer;
+            @include alignCenter();
+
+            img {
+                width: 250px;
+            }
+
+        }
+
+    }
+
+
+}
+
+.details {
+    position: fixed;
+    top: 0;
+    width: 50vw;
+    height: 100vh;
+    visibility: hidden;
+    opacity: 0;
+    transition: 200ms;
+    z-index: 1000;
+
+    &.show {
+        visibility: visible;
+        opacity: 1;
+
+        .overview-details .seila {
+            
+            img {
+                opacity: 1;
+                transition-delay: 1s;
+            }
+
+        }
+
+    }
+
+    .overview-details {
+        position: relative;
+        @include alignCenter();
+        height: 100%;
+
+        .navigation {
+            position: absolute;
+            top: 10px;
+            left: -60px;
+            @include alignCenter();
+            width: 50px;
+            height: 50px;
+            background-color: #ffffff10;
+            border: none;
+            border-radius: 50%;
+            transition: .3s ease-in-out;
+            cursor: pointer;
+            z-index: 1001;
+            opacity: 0;
+        
+            &:hover {
+                transform: scale(0.8);
+            }
+        
+            &.open {
+                left: 20px;
+                opacity: 1;
+            }
+        
+            i {
+                color: #ffffff;
+                font-size: 18px;
+            }
+        
+        }
+        
+        .seila {
+            @include alignCenter();
+            
+            img {
+                width: 300px;
+                opacity: 0;
+                transition: 200ms;
+            }
+
+        }
+
+    }
+
+    .right-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 50px;
+        position: fixed;
+        top: 0;
+        right: -50vw;
+        background-color: #ffffff;
+        width: 50vw;
+        height: 100vh;
+        z-index: 1000;
+        transition: 0.5s cubic-bezier(0.05, 0.07, 0.3, 0.98);
+        overflow: auto;
+        padding: 20px;
+
+        .card-user {
+            background-color: #efefef;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+
+            .user {
+
+                p {
+                    font-size: 13px;
+                }
+
+            } 
+
+        }
+
+        button {
+            padding: 10px 30px;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            transition: 200ms;
+            cursor: pointer;
+
+            &:hover {
+                transform: scale(.8);
+            }
+
+        }
+    
+        &.open {
+            right: 0px;
+        }
+    
+    }
+
+}
