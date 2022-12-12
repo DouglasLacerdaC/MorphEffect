@@ -1,5 +1,4 @@
 # Morph Effect
-Projeto desenvolvido para desenvolver efeito morph.
 
 ![Screenshot](./imgs/preview.png)
 
