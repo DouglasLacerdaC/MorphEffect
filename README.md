@@ -1,7 +1,7 @@
 # Morph Effect
 Projeto desenvolvido para desenvolver efeito morph.
 
-![Screenshot](./imgs/preview.gif)
+![Screenshot](./imgs/preview.png)
 
 <br/>
 <br/>
