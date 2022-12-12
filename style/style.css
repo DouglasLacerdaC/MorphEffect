@@ -276,4 +276,35 @@ section .cards-wrapper .card img {
 }
 .details .right-content.open {
   right: 0px;
+}
+
+.responsive {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: #c9dbfe;
+  opacity: 0;
+  visibility: hidden;
+}
+.responsive img {
+  width: 300px;
+}
+.responsive p {
+  font-weight: 600;
+  color: #386177;
+}
+
+@media (width < 700px) {
+  .responsive {
+    visibility: visible;
+    opacity: 1;
+  }
+  .morph, header, .cards-wrapper, .details {
+    display: none !important;
+  }
 }/*# sourceMappingURL=style.css.map */

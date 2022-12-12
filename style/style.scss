@@ -342,3 +342,42 @@ section {
     }
 
 }
+
+.responsive {
+    @include alignCenter();
+    flex-direction: column;
+    gap: 20px;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: #c9dbfe;
+    opacity: 0;
+    visibility: hidden;
+
+    img {
+        width: 300px;
+    }
+
+    p {
+        font-weight: 600;
+        color: #386177;
+    }
+    
+}
+
+@media (width < 700px) {
+    
+    .responsive {
+        
+        visibility: visible;
+        opacity: 1;
+    
+    }
+
+    .morph, header, .cards-wrapper, .details {
+    
+        display: none !important;
+    
+    }
+    
+}
