@@ -120,7 +120,7 @@ function openAsideRight(index) {
                 </div>
             </div>
     
-            <button style='background-color: ${color};' >Save</button>
+            <button style='background-color: ${color};' arial-label="Save" >Save</button>
         
         `
 
@@ -138,7 +138,7 @@ function insertCards() {
     cards.map((item, index) => {
         return cardsWrapper.insertAdjacentHTML('beforeend', `
             <div class="card" style="background-color: ${item.color};" onclick="viewDetails(event, ${index})" >
-                <img src='${item.img}' />
+                <img src='${item.img}' alt="Image preview" />
             </div>
         `)
     })    
